@@ -522,6 +522,46 @@ img {
   background-color: #ffffff;
 }
 
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
 .modal {
   position: fixed;
 
@@ -534,7 +574,17 @@ img {
   box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
 }
 
-.modal.login {
+.modal.modal-active {
+  display: block;
+
+  animation: bounce 0.6s;
+}
+
+.modal.modal-error {
+  animation: shake 0.6s;
+}
+
+.login {
   top: 120px;
   left: 50%;
 
@@ -701,7 +751,7 @@ img {
   margin-right: 0;
 }
 
-.modal.map {
+.map {
   top: 50%;
   left: 50%;
 
@@ -712,6 +762,22 @@ img {
   margin-left: -390px;
 
   border: 7px solid white;
+}
+
+.map iframe {
+  position: relative;
+  z-index: 2;
+
+  border: none;
+}
+
+.map img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  margin: 0;
 }
 
 .page-title {
@@ -831,7 +897,7 @@ img {
   color: #663d15;
 }
 
-.filter-input:bled + label {
+.filter-input:active + label {
   color: #000000;
 
   opacity: 0.5;
